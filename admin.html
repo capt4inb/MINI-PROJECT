@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <section class="container">
-        <header class="w-[1440px] h-[200px] bg-[#00A0FE] flex justify-center items-center"><!--Header-->
+    <section class="w-full h-screen flex flex-col items-center">
+        <header class="w-full h-[200px] bg-[#00A0FE] flex justify-center items-center"><!--Header-->
             <div class="w-[580px] h-[80px] relative flex items-center">
             <input type="text" name="" id="input-search" class="w-full h-full rounded-[10px]">
             <label for="input-search" class="absolute right-0 px-[10px]"><?xml version="1.0" ?><svg height="40px" viewBox="0 0 512 512" width="40px" xmlns="http://www.w3.org/2000/svg"><title/><path d="M456.69,421.39,362.6,327.3a173.81,173.81,0,0,0,34.84-104.58C397.44,126.38,319.06,48,222.72,48S48,126.38,48,222.72s78.38,174.72,174.72,174.72A173.81,173.81,0,0,0,327.3,362.6l94.09,94.09a25,25,0,0,0,35.3-35.3ZM97.92,222.72a124.8,124.8,0,1,1,124.8,124.8A124.95,124.95,0,0,1,97.92,222.72Z"/></svg></label>
@@ -22,37 +22,37 @@
                 <input type="file" class="file-input file-input-bordered w-full max-w-xs" />
             </figure>
             <form action="" class="flex flex-col gap-2 w-[800px] h-auto"><!--Form -->
+
                 <div class="flex flex-row gap-2 w-full">
                 <label class="input input-bordered flex items-center gap-2 basis-1/2">
-                    Tên cầu thủ<input type="text" name="name" id="name" class="grow" placeholder="Daisy" />
+                    Tên cầu thủ<input type="text" name="name" id="name" class="grow" placeholder="Daisy" /><!--Ten cau thu-->
                 </label>
-                <select name="position" id="position" class="select select-bordered basis-1/2">
+                <select name="position" id="position" class="select select-bordered basis-1/2"><!--Vi tri-->
                     <option disabled selected>Vị trí</option>
-                    <option value="">FW</option>
-                    <option value="">MF</option>
-                    <option value="">DF</option>
-                    <option value="">GK</option>
                 </select>
                 </div>
-                <select name="team_id" id="team_id" class="select select-bordered">
-                    <option disabled selected>Đội tuyển</option>
-                    <option value="">Manchester1</option>
-                    <option value="">Manchester2</option>
-                    <option value="">Manchester3</option>
-                    <option value="">Manchester4</option>
-                    <option value="">Manchester5</option>
-                </select>
+                
                 <div class="flex flex-row gap-2 w-full">
-                    <label class="input input-bordered flex items-center gap-2 basis-1/2">
+                <label class="input input-bordered flex items-center gap-2 basis-1/2">
+                  Lương<input type="text" name="salary" id="salary" class="grow" placeholder="200.000" /><!--Luong cau thu-->
+                </label>
+                <select name="teamId" id="teamId" class="select select-bordered basis-1/2"><!--Doi bong-->
+                    <option disabled selected>Đội tuyển</option>
+                </select>
+                </div>
+
+                <div class="flex flex-row gap-2 w-full">
+                    <label class="input input-bordered flex items-center gap-2 basis-1/2"><!--DATE OF BIRTH-->
                         <?xml version="1.0" ?><svg id="Layer_1" width="2rem" height="2rem" style="enable-background:new 0 0 100.353 100.353;" version="1.1" viewBox="0 0 100.353 100.353" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M32.286,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,43.113,33.115,42.441,32.286,42.441z M30.786,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M55.054,42.441h-9.762c-0.829,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,43.113,55.882,42.441,55.054,42.441z M53.554,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M77.12,42.441h-9.762c-0.828,0-1.5,0.671-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,43.113,77.948,42.441,77.12,42.441z M75.62,52.203h-6.762v-6.762h6.762V52.203z"/><path d="M32.286,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.829,0,1.5-0.672,1.5-1.5   v-9.762C33.786,65.349,33.115,64.677,32.286,64.677z M30.786,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M55.054,64.677h-9.762c-0.829,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.671,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5   v-9.762C56.554,65.349,55.882,64.677,55.054,64.677z M53.554,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M77.12,64.677h-9.762c-0.828,0-1.5,0.672-1.5,1.5v9.762c0,0.828,0.672,1.5,1.5,1.5h9.762c0.828,0,1.5-0.672,1.5-1.5v-9.762   C78.62,65.349,77.948,64.677,77.12,64.677z M75.62,74.439h-6.762v-6.762h6.762V74.439z"/><path d="M89,13.394h-9.907c-0.013,0-0.024,0.003-0.037,0.004V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994   H56.041V11.4c0-3.268-2.658-5.926-5.926-5.926s-5.926,2.659-5.926,5.926v1.994H33.025V11.4c0-3.268-2.658-5.926-5.926-5.926   s-5.926,2.659-5.926,5.926v1.995c-0.005,0-0.01-0.001-0.015-0.001h-9.905c-0.829,0-1.5,0.671-1.5,1.5V92.64   c0,0.828,0.671,1.5,1.5,1.5H89c0.828,0,1.5-0.672,1.5-1.5V14.894C90.5,14.065,89.828,13.394,89,13.394z M70.204,11.4   c0-1.614,1.312-2.926,2.926-2.926s2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926s-2.926-1.312-2.926-2.926V11.4z    M50.115,8.474c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926c-1.614,0-2.926-1.312-2.926-2.926v-4.643   c0.004-0.047,0.014-0.092,0.014-0.141s-0.01-0.094-0.014-0.141V11.4C47.189,9.786,48.501,8.474,50.115,8.474z M24.173,11.4   c0-1.614,1.312-2.926,2.926-2.926c1.613,0,2.926,1.312,2.926,2.926v8.277c0,1.613-1.312,2.926-2.926,2.926   c-1.614,0-2.926-1.312-2.926-2.926V11.4z M87.5,91.14H12.753V16.394h8.405c0.005,0,0.01-0.001,0.015-0.001v3.285   c0,3.268,2.659,5.926,5.926,5.926s5.926-2.658,5.926-5.926v-3.283h11.164v3.283c0,3.268,2.659,5.926,5.926,5.926   s5.926-2.658,5.926-5.926v-3.283h11.163v3.283c0,3.268,2.658,5.926,5.926,5.926s5.926-2.658,5.926-5.926V16.39   c0.013,0,0.024,0.004,0.037,0.004H87.5V91.14z"/></g></svg>
-                        <input type="date" name="year_of_birth" id="year_of_birth" class="grow"/>
+                        <input type="date" name="yearOfBirth" id="yearOfBirth" class="grow"/>
                     </label>
                     <label class="input input-bordered flex items-center gap-2 basis-1/2">                 
                         <?xml version="1.0" ?><svg width="2rem" height="2rem" id="Layer_1" style="enable-background:new 0 0 91 91;" version="1.1" viewBox="0 0 91 91" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M25.1,61.5c3.3-1.5,6.9-2.5,10.7-3.2c-0.7-3.2-1.1-6.5-1.2-9.9H18.3c0.3,5.2,2,9.9,4.8,13.9L25.1,61.5z"/><path d="M26.4,64.7l-1.2,0.5c4.4,5,10.6,8.3,17.5,9.1l-0.3-0.4c-2.5-3.4-4.5-7.6-5.8-12.2C32.9,62.3,29.5,63.3,26.4,64.7z"/><path d="M36.5,32c1.2-4.3,3-8.3,5.3-11.6l0.9-1.2c-7,0.8-13.1,4.2-17.6,9.2l1.1,0.5C29.4,30.3,32.9,31.4,36.5,32z"/><path d="M35.7,35.3c-3.9-0.7-7.5-1.8-10.9-3.3L23,31.2c-2.7,4-4.4,8.8-4.7,13.9h16.3C34.7,41.7,35,38.4,35.7,35.3z"/><path d="M66.3,65.5L65.6,65c-3.4-1.6-7.2-2.7-11.2-3.4c-1.3,4.6-3.3,8.8-5.8,12.2l-0.4,0.6C55.4,73.8,61.7,70.5,66.3,65.5z"/><path d="M65.7,28.6l0.8-0.4c-4.6-5.1-11-8.4-18.2-9l0.9,1.3c2.3,3.3,4,7.3,5.3,11.6C58.5,31.4,62.3,30.2,65.7,28.6z"/><path d="M37.9,45H53c-0.1-3.2-0.5-6.3-1.1-9.2c-2.1,0.2-4.2,0.4-6.3,0.4c-2.2,0-4.4-0.1-6.5-0.4C38.4,38.7,38,41.9,37.9,45z"/><path d="M68.6,30.8l-1.4,0.8c-3.6,1.7-7.7,3-11.9,3.7c0.7,3.1,1,6.4,1.1,9.7h17.2C73.3,39.8,71.5,34.9,68.6,30.8z"/><path d="M67.3,62.1l1.2,0.8c3-4.1,4.8-9.1,5.1-14.4H56.4c-0.1,3.4-0.5,6.7-1.2,9.9c4.3,0.7,8.3,2,11.9,3.7L67.3,62.1z"/><path d="M45.5,21.1l-1,1.3c-2,2.8-3.5,6.3-4.6,10.1c1.9,0.2,3.8,0.3,5.7,0.3c1.9,0,3.7-0.1,5.5-0.3c-1.1-3.8-2.7-7.3-4.7-10.2   L45.5,21.1z"/><path d="M45.5,72.4l0.4-0.5c2.2-3,3.9-6.7,5.1-10.7c-1.8-0.2-3.6-0.3-5.4-0.3c-1.9,0-3.8,0.1-5.6,0.3c1.2,4,2.9,7.7,5.1,10.6   L45.5,72.4z"/><path d="M45.6,57.5c2.1,0,4.2,0.1,6.3,0.4c0.7-3,1-6.2,1.1-9.4H37.9c0.1,3.3,0.5,6.4,1.1,9.4C41.2,57.6,43.4,57.5,45.6,57.5z"/></g></svg>
-                        <input type="text" class="grow" name="country" id="country" placeholder="Quê quán" />
+                        <input type="text" class="grow" name="country" id="country" placeholder="Quê quán" /><!--QUE QUAN-->
                     </label>
                 </div>
-                <div class="flex flex-row gap-2 w-full"><!--chieu cao / can nang-->
+
+                <div class="flex flex-row gap-2 w-full"><!--CHIEU CAO / CAN NANG-->
                 <label class="input input-bordered flex items-center gap-2 basis-1/2">
                     <?xml version="1.0" ?><svg viewBox="0 0 512 512" width="2rem" height="2rem" xmlns="http://www.w3.org/2000/svg"><g id="Height"><path d="M315.9922,434.5293l24.0137-192.22c2.2685-16.9707-6.252-33.3589-20.7207-39.8535-21.4971-9.65-56.4795-9.6514-77.98,0-14.4678,6.4946-22.9883,22.8828-20.7276,39.7973l24.0215,192.2759h32.2627V339.5874a3.4457,3.4457,0,0,1,3.3965-3.4336,3.5385,3.5385,0,0,1,2.4522.9927,3.42,3.42,0,0,1,1.0185,2.4409v94.9419Zm-35.874-111.3745a16.4891,16.4891,0,0,0-16.2569,16.4326v81.9419h-7.7861L233.47,240.5864c-1.4873-11.1318,4.0469-22.18,13.16-26.271,18.249-8.1914,49.084-8.1909,67.331,0,9.1133,4.09,14.6475,15.1387,13.1524,26.3262L304.5156,421.5293h-7.7871V339.5874a16.4345,16.4345,0,0,0-16.61-16.4326Z"/><path d="M385.3535,471.1357a3.5,3.5,0,0,0,3.5-3.5V444.9014a3.5,3.5,0,0,0-3.5-3.5H136.1465V404.8857h28.2392v-13H136.1465V353.707h44.2392v-13H136.1465V304.4478h28.2392v-13H136.1465V254.15h44.2392v-13H136.1465V204.2812h28.2392v-13H136.1465V155.63h44.2392v-13H136.1465V106.1152h249.207a3.5,3.5,0,0,0,3.5-3.5V72.4146a3.5,3.5,0,0,0-3.5-3.5H234.9746a25.4864,25.4864,0,0,1-22.4-13.3121v0a28.2165,28.2165,0,0,0-24.8-14.7378h-60.833a3.5,3.5,0,0,0-3.5,3.5L123.1465,471.1Z"/><path d="M281.7148,188.9912A29.448,29.448,0,0,0,311.13,159.5767V142.4014a29.4479,29.4479,0,0,0-29.4151-29.4141h-2.84a29.4477,29.4477,0,0,0-29.4141,29.4141v17.1753a29.4477,29.4477,0,0,0,29.4141,29.4145Zm-19.2539-29.4145V142.4014a16.4326,16.4326,0,0,1,16.4141-16.4141h2.84A16.4329,16.4329,0,0,1,298.13,142.4014v17.1753a16.4333,16.4333,0,0,1-16.4151,16.4145h-2.84A16.4331,16.4331,0,0,1,262.4609,159.5767Z"/></g></svg>
                     <input type="text" class="grow" name="height" id="height" placeholder="173cm" />
@@ -62,6 +62,7 @@
                     <input type="text" class="grow" name="weigh" id="weigh" placeholder="65kg" />
                 </label>
                 </div>
+
                 <button id="addPlayer" class="btn btn-accent text-white">ADD</button>
             </form><!--Form-->
         </main>
@@ -96,9 +97,10 @@
                   </td>
                   <td class="text-center">173cm 65kg</td>
                   <td class="text-center">200.000</td>
-                  <td class="text-center"><button class="btn btn-success btn-md"><?xml version="1.0" ?><svg enable-background="new 0 0 32 32" width="1.5rem" height="1.5rem" id="svg2" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><g id="background"><rect fill="none" height="32" width="32"/></g><g id="user_x5F_profile_x5F_edit"><path d="M12.001,18c2.209,0,4-1.791,4-4s-1.791-4-4-4s-4,1.791-4,4S9.792,18,12.001,18z M24.001,14.059V5.584L18.415,0H0.001v32h24   v-0.06C28.5,31.442,32,27.633,32,23S28.5,14.557,24.001,14.059z M17.999,2.413L21.587,6h-3.588V2.413z M2.001,30V1.998h14v6.001h6   v6.06c-3.477,0.385-6.348,2.75-7.477,5.941c-3.562,0-8.523,0-8.523,0s-2,0-2,2c0,1,0,6,0,6h11.518c0.506,0.756,1.125,1.43,1.832,2   H2.001z M23.001,29.999c-3.865-0.008-6.994-3.135-7-6.999c0.006-3.865,3.135-6.994,7-7c3.864,0.006,6.991,3.135,6.999,7   C29.992,26.864,26.865,29.991,23.001,29.999z"/><polygon points="22,27 19,27 19,24  "/><rect height="4.243" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 56.5269 20.5858)" width="7.071" x="20.464" y="19.879"/></g></svg></button></td>
-                  <td class="text-center"><button class="btn btn-error btn-md"><?xml version="1.0" ?><svg viewBox="0 0 448 512" width="1.5rem" height="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/></svg></button></td>
-                </tr>              
+                  <td class="text-center"><button id="editBtn" class="btn btn-success btn-md"><?xml version="1.0" ?><svg enable-background="new 0 0 32 32" width="1.5rem" height="1.5rem" id="svg2" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"><g id="background"><rect fill="none" height="32" width="32"/></g><g id="user_x5F_profile_x5F_edit"><path d="M12.001,18c2.209,0,4-1.791,4-4s-1.791-4-4-4s-4,1.791-4,4S9.792,18,12.001,18z M24.001,14.059V5.584L18.415,0H0.001v32h24   v-0.06C28.5,31.442,32,27.633,32,23S28.5,14.557,24.001,14.059z M17.999,2.413L21.587,6h-3.588V2.413z M2.001,30V1.998h14v6.001h6   v6.06c-3.477,0.385-6.348,2.75-7.477,5.941c-3.562,0-8.523,0-8.523,0s-2,0-2,2c0,1,0,6,0,6h11.518c0.506,0.756,1.125,1.43,1.832,2   H2.001z M23.001,29.999c-3.865-0.008-6.994-3.135-7-6.999c0.006-3.865,3.135-6.994,7-7c3.864,0.006,6.991,3.135,6.999,7   C29.992,26.864,26.865,29.991,23.001,29.999z"/><polygon points="22,27 19,27 19,24  "/><rect height="4.243" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 56.5269 20.5858)" width="7.071" x="20.464" y="19.879"/></g></svg></button></td>
+                  <td class="text-center"><button id="delBtn" class="btn btn-error btn-md"><?xml version="1.0" ?><svg viewBox="0 0 448 512" width="1.5rem" height="1.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/></svg></button></td>
+                </tr>   
+              </tbody>           
               <!-- foot -->
               <tfoot>
                 <tr>

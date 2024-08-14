@@ -23,3 +23,24 @@ async function fetchApiRenderall() {
 }
 
 fetchApiRenderall();
+
+// DECLARE VARIABLES FORM 
+const namePlayer = document.querySelector('#name');
+const positionPlayer = document.querySelector('#position');
+const salaryPlayer = document.querySelector('#salary');
+const team = document.querySelector('#teamId');
+const dobPlayer = document.querySelector('#yearOfBirth');
+const country = document.querySelector('#country');
+const heightPlayer = document.querySelector('#height');
+const weighPlayer = document.querySelector('#weigh');
+const addBtn = document.querySelector('#addPlayer');
+// ------------------------------------------------------
+
+// DECLARE VARIABLES TABLE 
+const tableList = document.querySelector('.danhsach tbody');
+const row = document.querySelector('tr');
+const editBtn = document.querySelector('#editBtn');
+const delBtn = document.querySelector('#delBtn');
+// ------------------------------------------------------
+
+// FUNCTIONS 
