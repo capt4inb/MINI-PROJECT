@@ -59,7 +59,23 @@ const heightPlayer = document.querySelector('#height');
 const weighPlayer = document.querySelector('#weigh');
 const addBtn = document.querySelector('#addPlayer');
 // ------------------------------------------------------
-
-
-
 // FUNCTIONS 
+// LOAD FILE AVATAR
+const playerImage = document.querySelector('#playerImage');
+const previewImage = document.querySelector('#previewImage');
+const imageFileName = document.querySelector('#imageFileName');
+
+  playerImage.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImage.src = event.target.result;
+        imageFileName.textContent = file.name;
+      };
+      reader.readAsDataURL(file);
+    } else {
+      previewImage.src = '#';
+      imageFileName.textContent = '';
+    }
+  });
