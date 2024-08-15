@@ -1,4 +1,5 @@
 const swiperContainer = document.getElementById('swiperContainer');
+const tbody = document.getElementById('tbody')
 
 
 // https://ktc-player-base-production.up.railway.app/api/v1/upload/image
@@ -54,3 +55,75 @@ const getData = () => {
 };
 
 getData();
+
+{/* <tr>
+                  <th>
+                    <label>
+                      <input type="checkbox" class="checkbox" />
+                    </label>
+                  </th>
+                  <td>
+                    <div class="flex items-center gap-3">
+                      <div class="avatar">
+                        <div class="mask mask-squircle h-12 w-12">
+                          <img
+                            src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                            alt="Avatar Tailwind CSS Component" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-bold">Hart Hagerty</div>
+                        <div class="text-sm opacity-50">United States</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    Zemlak, Daniel and Leannon
+                    <br />
+                    <span class="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                  </td>
+                  <td>Purple</td>
+                  <th>
+                    <button class="btn btn-ghost btn-xs">details</button>
+                  </th>
+                </tr> */}
+const getDataForRenderList = () => {
+  fetch('https://ktc-player-base-production.up.railway.app/api/v1/player',
+    {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aGFuaGJlbjAxIiwiaWF0IjoxNzIzNjI3MjA4LCJleHAiOjE4MTAwMjcyMDh9.JioHBTgGGYSS5h8xk_JpR-fczgLwB1ToRaZqP6fv6dg'
+      }
+    }
+  )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      data.data.forEach(item => {
+        const newTr = document.createElement('tr');
+        newTr.innerHTML = `
+          <tr>
+                  <td>
+                    <div class="flex items-center gap-3">
+                      <div class="avatar">
+                        <div class="mask mask-squircle h-12 w-12">
+                          <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" alt="Avatar Tailwind CSS Component" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-bold">Lê Triệu Phú</div>
+                        <div class="text-sm opacity-50">Tên đội bóng</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-center">173cm 65kg</td>
+                  <td class="text-center">200.000</td>
+                </tr> 
+        `;
+        tbody.appendChild(newTr);
+      });
+      // swiper.update(); // update Swiper after adding new slides
+    })
+    .catch(error => console.error('Error:', error));
+};
+getDataForRenderList()
