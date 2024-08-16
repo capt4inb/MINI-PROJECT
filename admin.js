@@ -68,7 +68,9 @@ async function uploadImage(valueImage){
     },
     body: formData
   })
-  .then(response => console.log('response: ', response))
+  .then(response => response.text())
+  .then((result) => console.log(result))
+
   // .then(data => {
   //   console.log('Upload success:', data);
   // })
