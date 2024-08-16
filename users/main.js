@@ -135,3 +135,24 @@ search.addEventListener("focusout", handleFocus);
 // Function calls
 getData();
 getDataForRenderList();
+
+
+const uploadImage= ()=>{
+  fetch("https://ktc-player-base-production.up.railway.app/api/v1/upload/image",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aGFuaGJlbjAxIiwiaWF0IjoxNzIzNjI3MjA4LCJleHAiOjE4MTAwMjcyMDh9.JioHBTgGGYSS5h8xk_JpR-fczgLwB1ToRaZqP6fv6dg",
+      },
+      body: JSON.stringify({
+        image: imageInput.files[0],
+        playerId: 1, // Replace with your player ID
+        type: "player",
+      }),
+    }
+  )
+  .then(res=>res.json())
+  .then(data=>console.log(data))
+}
