@@ -3,11 +3,13 @@ const tableList = document.querySelector('.danhsach tbody');
 const row = document.querySelector('tr');
 const editBtn = document.querySelector('#editBtn');
 const delBtn = document.querySelector('#delBtn');
+const inputFileAvatar = document.querySelector('#input__file-avatar');
 // ------------------------------------------------------
 const apiRenderall = 'https://ktc-player-base-production.up.railway.app/api/v1/player';
-
+const apiUploadImg ='https://ktc-player-base-production.up.railway.app/api/v1/upload/image';
+const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW52bzEyMDIiLCJpYXQiOjE3MjM3OTI3MDcsImV4cCI6MTgxMDE5MjcwN30.KrTYRXUVSUZw5-ntBdnXV0IEkyCsDOZc2ESVe87f4DY'; // Replace with your actual token
+// RENDER DATA TABLE
 async function fetchApiRenderall() {
-  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aGFuaGJlbjAxIiwiaWF0IjoxNzIzNjMyMDkxLCJleHAiOjE4MTAwMzIwOTF9.x2kxoVO-9P_iAkLNIEEYcweksrg5L7b9zdBRDC2O1do'; // Replace with your actual token
 
   fetch(apiRenderall, {
     method: 'GET',
@@ -46,6 +48,33 @@ async function fetchApiRenderall() {
   
 
 fetchApiRenderall();
+//UPLOAD IMAGE 
+inputFileAvatar.addEventListener('change', async (e) => {
+  const getFile = e.target.files[0];
+  const response = await uploadImage(getFile);
+})
+
+
+async function uploadImage(valueImage){
+  // const file = fileInput.files[0];
+  const formData = new FormData();
+  formData.append('file', valueImage);
+  formData.append('folder','avatar');
+  await fetch(apiUploadImg,{
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: formData
+  })
+  .then(response => console.log('response: ', response))
+  // .then(data => {
+  //   console.log('Upload success:', data);
+  // })
+}
+
+
 
 
 // DECLARE VARIABLES FORM 
@@ -59,7 +88,4 @@ const heightPlayer = document.querySelector('#height');
 const weighPlayer = document.querySelector('#weigh');
 const addBtn = document.querySelector('#addPlayer');
 // ------------------------------------------------------
-
-
-
 // FUNCTIONS 
