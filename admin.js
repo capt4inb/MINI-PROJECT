@@ -5,17 +5,6 @@ const editBtn = document.querySelector('#editBtn');
 const delBtn = document.querySelector('#delBtn');
 const inputFileAvatar = document.querySelector('#input__file-avatar');
 // ------------------------------------------------------
-// DECLARE VARIABLES FORM 
-const namePlayer = document.querySelector('#name');
-const positionPlayer = document.querySelector('#position');
-const salaryPlayer = document.querySelector('#salary');
-const team = document.querySelector('#teamId');
-const dobPlayer = document.querySelector('#yearOfBirth');
-const country = document.querySelector('#country');
-const heightPlayer = document.querySelector('#height');
-const weighPlayer = document.querySelector('#weigh');
-const addBtn = document.querySelector('#addPlayer');
-// ------------------------------------------------------
 const apiRenderall = 'https://ktc-player-base-production.up.railway.app/api/v1/player';
 const apiUploadImg ='https://ktc-player-base-production.up.railway.app/api/v1/upload/image';
 const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW52bzEyMDIiLCJpYXQiOjE3MjM3OTI3MDcsImV4cCI6MTgxMDE5MjcwN30.KrTYRXUVSUZw5-ntBdnXV0IEkyCsDOZc2ESVe87f4DY'; // Replace with your actual token
@@ -59,11 +48,56 @@ async function fetchApiRenderall() {
   
 
 fetchApiRenderall();
+
+
 //UPLOAD IMAGE 
 inputFileAvatar.addEventListener('change', async (e) => {
   const getFile = e.target.files[0];
+  console.log(getFile)
   const response = await uploadImage(getFile);
+
 })
+
+async function uploadImage(valueImage){
+  console.log(valueImage)
+   // Get the selected file
+const formData= new FormData()
+formData.append("file", valueImage); // Append the file
+formData.append("folder","avatar") // Append additional data
+console.log(...formData)
+try {
+  const res = await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+    body: formData
+  })
+  if(!res.ok){
+    throw new Error(`Error status:${res.status()}`)
+  }
+  const data= await res.json()
+  console.log(data.secure_url)
+  imagePreview.src = data.secure_url;
+}
+catch(error){
+  console.log(error)
+}}
+  // const formData = new FormData();
+  // formData.append('file', valueImage);
+  // formData.append('folder','avatar');
+  // await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
+  //   method: 'POST',
+  //   headers: {
+  //     'Authorization': `Bearer ${token}`,
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: formData
+  // })
+  // .then(response => console.log(response))
+  // .then((result) => console.log('result',result))
+  // .catch(error => console.error('Error:', error));
+//}
 
 
 // async function uploadImage(valueImage){
@@ -75,46 +109,30 @@ inputFileAvatar.addEventListener('change', async (e) => {
 //     method: 'POST',
 //     headers: {
 //       'Authorization': `Bearer ${token}`,
-//       // 'Content-Type': 'application/json',
-//       'Access-Control-Allow-Origin': '*',
+//       'Content-Type': 'application/json'
 //     },
 //     body: formData
 //   })
 //   .then(response => response.text())
 //   .then((result) => console.log(result))
 
-//   // .then(data => {
-//   //   console.log('Upload success:', data);
-//   // })
-// }
+  // .then(data => {
+  //   console.log('Upload success:', data);
+  // })
+//}
 
-// ----------------------------------------------------------------
-async function uploadImage(valueImage){
-  // Get the selected file
-const fileList
-= new FormData();
-const formData= new FormData()
-formData.append("file", fileList); // Append the file
-formData. append("folder","avatar") // Append additional data
-console.log(...formData)
-try {
- const res = await fetch('https://api.allorigins.win/get?charset=ISO-8859-1&url=https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
-   method: 'POST',
-   headers: {
-     'Authorization': `Bearer ${token}`,
-     'Content-Type': 'application/json'
-   },
-   body: formData
- })
- if(!res.ok){
-   throw new Error(`Error status:${res.status()}`)
- }
- const data= await res.json()
- console.log(data)
-}
-catch(error){
- console.log(error)
-}}
 
+
+
+// DECLARE VARIABLES FORM 
+const namePlayer = document.querySelector('#name');
+const positionPlayer = document.querySelector('#position');
+const salaryPlayer = document.querySelector('#salary');
+const team = document.querySelector('#teamId');
+const dobPlayer = document.querySelector('#yearOfBirth');
+const country = document.querySelector('#country');
+const heightPlayer = document.querySelector('#height');
+const weighPlayer = document.querySelector('#weigh');
+const addBtn = document.querySelector('#addPlayer');
+// ------------------------------------------------------
 // FUNCTIONS 
-addBtn.addEventListener
