@@ -19,7 +19,9 @@
         transition: all 0.5s ease;
     }
 </style>
-<body class="w-full h-full bg-red-500 flex flex-col items-center bg-[url('../image/backgroundbody.png')] bg-cover bg-no-repeat overflow-auto">
+
+<body
+    class="w-full h-full bg-red-500 flex flex-col items-center bg-[url('../image/backgroundbody.png')] bg-cover bg-no-repeat overflow-auto">
     <header id="header" class="w-full sticky top-0 z-[100]">
         <div class="bg-[#01A0FE] content flex justify-between items-center">
             <div class="logo m-2">
@@ -33,108 +35,44 @@
             </div>
         </div>
     </header>
-    
-    <main
-        class="w-full h-[842px]   relative flex justify-center items-center container overflow-hidden">
+
+    <main class="w-full h-[842px]   relative flex justify-center items-center container overflow-hidden">
         <div class=" w-[70%] h-[70%] z-10 rounded flex justify-center items-center">
             <div class="swiper mySwiper">
                 <div id="swiperContainer" class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="hero h-full">
-                        <div class="hero-content flex flex-col h-full">
-                            <div class="player flex gap-5 h-1/2 items-center justify-center">
-                                <img style="box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;" src="./images/download.jpg" class="max-w-sm rounded-lg shadow-2xl w-[200px] h-[200px]" />
-                                <div class="flex items-center justify-center">
-                                    <h1 class="text-5xl font-bold">Cristino Ronaldo</h1>
-                                    
-                                </div>
-                            </div>
-                            <div class="player-infor flex flex-col w-full text-center gap-5 w-full text-[black]">
-                                <div class="flex flex-col items-center justify-evenly gap-5 w-full">
-                                    <div class="flex justify-center gap-10 w-full">
-                                        <p id="birthday" class="p-4 rounded bg-gray-200"><b>Năm sinh:</b> 1985</p>
-                                        <p id="country" class="p-4 rounded bg-gray-200"><b>Quê quán:</b> Bồ Đào Nha</p>
-                                        <p id="height" class="p-4 rounded bg-gray-200"><b>Chiều cao:</b> 185cm</p>
-                                        <p id="weight" class="p-4 rounded bg-gray-200"><b>Cân nặng:</b> 74kg</p>
-                                    </div>
-                                    <div class="flex  justify-center gap-10 w-full">
-                                        <p id="position" class="p-4 rounded bg-gray-200"><b>Vị trí:</b> ST</p>
-                                        <p id="team" class="p-4 rounded bg-gray-200"><b>Đội tuyển:</b> Al Nassar</p>
-                                        <p id="" class="p-4 rounded bg-gray-200"><b>Lương:</b> 100.000 £</p>
-                                    </div>
-        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+
                 </div>
 
-              </div>
-            
+            </div>
+
         </div>
     </main>
-    <section class="bg-white rounded h-[70vh] w-[70%] overflow-auto">
+    <section class="bg-white rounded h-[70vh] w-[70%] overflow-auto text-center">
         <div class="overflow-x-auto p-2 ">
             <table class="table">
-              <!-- head -->
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Team</th>
-                  <th>sp</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-                
-              </tbody>
-              <!-- foot -->
+                <!-- head -->
+                <thead class="text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Height | Weight</th>
+                        <th>salary</th>
+                        <th>sp</th>
+                        <th>ss</th>
+                        <th>bc</th>
+                        <th>ls</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+                <!-- foot -->
             </table>
-          </div>
+        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            loop: true,
-            scrollbar: {
-                el: ".swiper-scrollbar",
-                hide: true,
-            },
-            effect: "cards",
-            grabCursor: true,
-            
-    keyboard: true,
-        });
-        const header = document.getElementById('header');
-        const search = document.getElementById('search');
-        let isblur = true
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            // header.classList.add('scrolled');
-            isblur ? header.style.opacity = '0.7' : header.style.opacity = '1'
-            !isblur
 
-        } else {
-            // header.classList.remove('scrolled');.
-            isblur ? header.style.opacity = '1' : header.style.opacity = '0.7'
-            !isblur
-
-        }
-    });
-    
-    search.addEventListener('focus',()=>{
-        // header.style.opacity = '1'
-        isblur ? header.style.opacity = '1' : header.style.opacity = '0.7'
-            !isblur
-    })
-    search.addEventListener('focusout',()=>{
-        // header.style.opacity = '0.5'
-        isblur ? header.style.opacity = '0.7' : header.style.opacity = '1'
-            !isblur
-    })
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
