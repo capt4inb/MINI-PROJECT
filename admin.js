@@ -48,33 +48,77 @@ async function fetchApiRenderall() {
   
 
 fetchApiRenderall();
+
+
 //UPLOAD IMAGE 
 inputFileAvatar.addEventListener('change', async (e) => {
   const getFile = e.target.files[0];
+  console.log(getFile)
   const response = await uploadImage(getFile);
+
 })
 
-
 async function uploadImage(valueImage){
-  // const file = fileInput.files[0];
-  const formData = new FormData();
-  formData.append('file', valueImage);
-  formData.append('folder','avatar');
-  await fetch(apiUploadImg,{
+  console.log(valueImage)
+   // Get the selected file
+const formData= new FormData()
+formData.append("file", valueImage); // Append the file
+formData.append("folder","avatar") // Append additional data
+console.log(...formData)
+try {
+  const res = await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      'Authorization': `Bearer ${token}`
     },
     body: formData
   })
-  .then(response => response.text())
-  .then((result) => console.log(result))
+  if(!res.ok){
+    throw new Error(`Error status:${res.status()}`)
+  }
+  const data= await res.json()
+  console.log(data.secure_url)
+}
+catch(error){
+  console.log(error)
+}}
+  // const formData = new FormData();
+  // formData.append('file', valueImage);
+  // formData.append('folder','avatar');
+  // await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
+  //   method: 'POST',
+  //   headers: {
+  //     'Authorization': `Bearer ${token}`,
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: formData
+  // })
+  // .then(response => console.log(response))
+  // .then((result) => console.log('result',result))
+  // .catch(error => console.error('Error:', error));
+//}
+
+
+// async function uploadImage(valueImage){
+//   // const file = fileInput.files[0];
+//   const formData = new FormData();
+//   formData.append('file', valueImage);
+//   formData.append('folder','avatar');
+//   await fetch(apiUploadImg,{
+//     method: 'POST',
+//     headers: {
+//       'Authorization': `Bearer ${token}`,
+//       'Content-Type': 'application/json'
+//     },
+//     body: formData
+//   })
+//   .then(response => response.text())
+//   .then((result) => console.log(result))
 
   // .then(data => {
   //   console.log('Upload success:', data);
   // })
-}
+//}
 
 
 

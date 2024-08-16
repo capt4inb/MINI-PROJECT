@@ -2,6 +2,7 @@ const swiperContainer = document.getElementById("swiperContainer");
 const tbody = document.getElementById("tbody");
 const header = document.getElementById("header");
 const search = document.getElementById("search");
+const dataList=[]
 
 let swiper;
 let dataArray;
@@ -120,6 +121,10 @@ const getDataForRenderList = () => {
           const index = dataArray.findIndex(
             (dataItem) => dataItem.id === item.id
           );
+          window.scrollTo({
+            top: 0,
+            behavior: 'instant'
+          });
           swiper.slideTo(index);
         });
       });
