@@ -1,3 +1,14 @@
+// DECLARE VARIABLES FORM 
+const namePlayer = document.querySelector('#name');
+const positionPlayer = document.querySelector('#position');
+const salaryPlayer = document.querySelector('#salary');
+const team = document.querySelector('#teamId');
+const dobPlayer = document.querySelector('#yearOfBirth');
+const country = document.querySelector('#country');
+const heightPlayer = document.querySelector('#height');
+const weighPlayer = document.querySelector('#weigh');
+const addBtn = document.querySelector('#addPlayer');
+// ------------------------------------------------------
 // DECLARE VARIABLES TABLE 
 const tableList = document.querySelector('.danhsach tbody');
 const row = document.querySelector('tr');
@@ -59,12 +70,12 @@ inputFileAvatar.addEventListener('change', async (e) => {
 })
 
 async function uploadImage(valueImage){
-  console.log(valueImage)
+  // console.log(valueImage)
    // Get the selected file
 const formData= new FormData()
 formData.append("file", valueImage); // Append the file
 formData.append("folder","avatar") // Append additional data
-console.log(...formData)
+// console.log(...formData)
 try {
   const res = await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
     method: 'POST',
@@ -77,62 +88,61 @@ try {
     throw new Error(`Error status:${res.status()}`)
   }
   const data= await res.json()
-  console.log(data.secure_url)
+  // console.log(data.secure_url)
   imagePreview.src = data.secure_url;
 }
 catch(error){
   console.log(error)
 }}
-  // const formData = new FormData();
-  // formData.append('file', valueImage);
-  // formData.append('folder','avatar');
-  // await fetch('https://ktc-player-base-production.up.railway.app/api/v1/upload/image',{
-  //   method: 'POST',
-  //   headers: {
-  //     'Authorization': `Bearer ${token}`,
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: formData
-  // })
-  // .then(response => console.log(response))
-  // .then((result) => console.log('result',result))
-  // .catch(error => console.error('Error:', error));
-//}
-
-
-// async function uploadImage(valueImage){
-//   // const file = fileInput.files[0];
-//   const formData = new FormData();
-//   formData.append('file', valueImage);
-//   formData.append('folder','avatar');
-//   await fetch(apiUploadImg,{
-//     method: 'POST',
-//     headers: {
-//       'Authorization': `Bearer ${token}`,
-//       'Content-Type': 'application/json'
-//     },
-//     body: formData
-//   })
-//   .then(response => response.text())
-//   .then((result) => console.log(result))
-
-  // .then(data => {
-  //   console.log('Upload success:', data);
-  // })
-//}
-
-
-
-
-// DECLARE VARIABLES FORM 
-const namePlayer = document.querySelector('#name');
-const positionPlayer = document.querySelector('#position');
-const salaryPlayer = document.querySelector('#salary');
-const team = document.querySelector('#teamId');
-const dobPlayer = document.querySelector('#yearOfBirth');
-const country = document.querySelector('#country');
-const heightPlayer = document.querySelector('#height');
-const weighPlayer = document.querySelector('#weigh');
-const addBtn = document.querySelector('#addPlayer');
-// ------------------------------------------------------
 // FUNCTIONS 
+// ADD FORM
+addBtn.addEventListener('click', async (e) => {
+  e.preventDefault(); // Prevent the form from submitting
+  // Get the values from the form inputs
+  const playerName = namePlayer.value;
+  const playerPosition = positionPlayer.value;
+  const playerSalary = salaryPlayer.value;
+  const playerTeam = team.value;
+  const playerDOB = dobPlayer.value;
+  const playerCountry = country.value;
+  const playerHeight = heightPlayer.value;
+  const playerWeight = weighPlayer.value; // Correct field name
+
+  // Create a new player object with the form values
+  const newPlayer =  {  
+    "avatar": imagePreview.src,
+    "name": playerName,
+    "position": playerPosition,
+    "salary": playerSalary,
+    "teamId": playerTeam,
+    "yearOfBirth": playerDOB,
+    "country": playerCountry,
+    "height": playerHeight,
+    "weigh": playerWeight, // Correct field name
+};
+
+    // Send the new player object to the API
+    fetch("https://ktc-player-base-production.up.railway.app/api/v1/player", {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPlayer),
+    });
+
+    // Clear the form inputs
+    namePlayer.value = '';
+    positionPlayer.value = '';
+    salaryPlayer.value = '';
+    team.value = '';
+    dobPlayer.value = '';
+    country.value = '';
+    heightPlayer.value = '';
+    weighPlayer.value = '';
+
+    // Re-fetch the data to update the table
+    fetchApiRenderall();
+    console.log('New Player Data:', newPlayer);
+
+  });
