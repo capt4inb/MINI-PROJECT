@@ -164,6 +164,7 @@ const displayPlayerList = (players) => {
 };
 
 const searchPlayer = (query, arraydata) => {
+  
   const lowerCaseQuery = query.toLowerCase();
   
   // Find the player whose name matches the search query
@@ -202,7 +203,6 @@ searchBtn.addEventListener("click", () => {
   }
 });
 fetchData();
-
 btnSort.addEventListener('click',()=>{
   displayPlayerList(isSorted ?  dataArray : dataArraySort );
   console.log(isSorted)
