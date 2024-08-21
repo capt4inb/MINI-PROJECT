@@ -30,7 +30,7 @@
             <div class="search-bar flex items-center mx-[50px] relative">
                 <label class="input input-bordered flex items-center gap-2">
                     <input id="search" type="text" class="grow" placeholder="Search" />
-                    <button><i class="fa fa-search"></i></button>
+                    <button id="searchBtn"><i class="fa fa-search"></i></button>
                 </label>
             </div>
         </div>
@@ -48,8 +48,13 @@
         </div>
     </main>
     <section class="bg-white rounded h-[70vh] w-[70%] overflow-auto text-center">
-        <div class="overflow-x-auto p-2 ">
-            <table class="table">
+        <div class="overflow-x-auto p-2 flex flex-col">
+            <div id="btnSort" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1"><i class="fa fa-filter"></i>
+                </div>
+              </div>
+            
+            <table id="table" class="table">
                 <!-- head -->
                 <thead class="text-center">
                     <tr>
@@ -75,7 +80,6 @@
 
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script src="main.js"></script>
 </body>
 
