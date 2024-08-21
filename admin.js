@@ -91,7 +91,6 @@ const weighPlayer = document.querySelector('#weigh');
 const addBtn = document.querySelector('#addPlayer');
 // ------------------------------------------------------
 // FUNCTIONS 
-<<<<<<< HEAD
 // LOAD FILE AVATAR
 const playerImage = document.querySelector('#playerImage');
 const previewImage = document.querySelector('#previewImage');
@@ -111,5 +110,3 @@ const imageFileName = document.querySelector('#imageFileName');
       imageFileName.textContent = '';
     }
   });
-=======
->>>>>>> f2cd0cde6dfbf7c863dfcb20489f6dd62bf97747
