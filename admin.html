@@ -9,19 +9,41 @@
 </head>
 <body>
     <section class="w-full h-screen flex flex-col items-center">
-        <header class="w-full h-[200px] bg-[#00A0FE] flex justify-center items-center"><!--Header-->
+        <!--Header-->
+        <!-- <header class="w-full h-[200px] bg-[#00A0FE] flex justify-center items-center">
             <div class="w-[580px] h-[80px] relative flex items-center">
             <input type="text" name="" id="input-search" class="w-full h-full rounded-[10px]">
             <label for="input-search" class="absolute right-0 px-[10px]"><?xml version="1.0" ?><svg height="40px" viewBox="0 0 512 512" width="40px" xmlns="http://www.w3.org/2000/svg"><title/><path d="M456.69,421.39,362.6,327.3a173.81,173.81,0,0,0,34.84-104.58C397.44,126.38,319.06,48,222.72,48S48,126.38,48,222.72s78.38,174.72,174.72,174.72A173.81,173.81,0,0,0,327.3,362.6l94.09,94.09a25,25,0,0,0,35.3-35.3ZM97.92,222.72a124.8,124.8,0,1,1,124.8,124.8A124.95,124.95,0,0,1,97.92,222.72Z"/></svg></label>
             </div>
-        </header><!--Header-->
+        </header> -->
 
-        <main class="w-[1440px] h-auto flex items-center justify-center gap-10 p-10">
+        <main class="w-2/3 h-auto flex items-center justify-center gap-10 p-10">
             <form action="" class="flex flex-col gap-2 w-[800px] h-auto"><!--Form -->
-                <figure class="flex flex-col gap-10 items-center w-[300px] h-auto">
-                    <img src="http://res.cloudinary.com/dr4cghpgp/image/upload/v1723614365/avatar/cyfsw4tymgk2ntppmxdi.jpg" id="imagePreview" class="rounded-full bg-white w-[200px] h-[200px] overflow-hidden shadow-md shadow-black"  alt="">
-                    <input type="file" class="file-input file-input-bordered w-full max-w-xs" id="input__file-avatar"/>
-                </figure>
+                <div class="w-[800px] h-auto flex gap-10">
+                    <figure class="flex flex-col gap-10 items-center w-[300px] h-auto">
+                        <label for="input__file-avatar"><img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" id="imagePreview" class="rounded-full bg-white w-[200px] h-[200px] overflow-hidden shadow-md shadow-black"  alt=""></label>
+                        <input type="file" class="file-input file-input-bordered w-full max-w-xs" id="input__file-avatar"/>
+                    </figure>
+                    <div class="flex flex-col justify-end gap-2">
+                        <div class="flex flex-row gap-2 w-full">
+                            <label class="input input-bordered flex items-center gap-2">
+                                Sprint Speed<input type="text" name="stat-ss" id="stat-ss" class="grow text-center" placeholder="80" /><!--Ten cau thu-->
+                            </label>
+                            <label class="input input-bordered flex items-center gap-2">
+                                Ball Control<input type="text" name="stat-bc" id="stat-bc" class="grow text-center" placeholder="89" /><!--Vi tri-->
+                            </label>
+                        </div>
+
+                        <div class="flex flex-row gap-2 w-full">
+                            <label class="input input-bordered flex items-center gap-2">
+                                Long Shot<input type="text" name="stat-ls" id="stat-ls" class="grow text-center" placeholder="91" /><!--Vi tri-->
+                            </label>
+                            <label class="input input-bordered flex items-center gap-2">
+                                Shot Power<input type="text" name="stat-sp" id="stat-sp" class="grow text-center" placeholder="101" /><!--Vi tri-->
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="flex flex-row gap-2 w-full">
                 <label class="input input-bordered flex items-center gap-2 basis-1/2">
@@ -67,7 +89,7 @@
             </form><!--Form-->
         </main>
         <!-- table -->
-        <div class="w-[1440px] h-fit flex items-center justify-center gap-10 p-10">
+        <div class="w-2/3 h-fit flex items-center justify-center gap-10 p-10">
             <table class="table danhsach  overflow-x-auto">
               <!-- head -->
               <thead>
@@ -107,11 +129,33 @@
               <ul class="menu bg-base-200 text-base-content min-h-full w-[800px] p-4">
                 <!-- Sidebar content here -->    
                 <form action="" class="flex flex-col gap-2 w-[800px] h-auto"><!--Form -->
-                    <figure class="flex flex-col gap-10 items-center w-[300px] h-auto">
-                        <img src="http://res.cloudinary.com/dr4cghpgp/image/upload/v1723614365/avatar/cyfsw4tymgk2ntppmxdi.jpg" id="imagePreviewEdit" class="rounded-full bg-white w-[200px] h-[200px] overflow-hidden shadow-md shadow-black"  alt="">
-                        <input type="file" class="file-input file-input-bordered w-full max-w-xs" id="input__file-avatarEdit"/>
-                    </figure>
-    
+                    <div class="w-[800px] h-auto flex gap-10">
+                        <figure class="flex flex-col gap-10 items-center w-[300px] h-auto">
+                            <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" id="imagePreviewEdit" class="rounded-full bg-white w-[200px] h-[200px] overflow-hidden shadow-md shadow-black"  alt="">
+                            <input type="file" class="file-input file-input-bordered w-full max-w-xs" id="input__file-avatarEdit"/>
+                        </figure>
+
+                        <div class="flex flex-col justify-end gap-2">
+                            <div class="flex flex-row gap-2 w-full">
+                                <label class="input input-bordered flex items-center gap-2">
+                                    Sprint Speed<input type="text" name="stat-ssEdit" id="stat-ssEdit" class="grow text-center" placeholder="80" /><!--Ten cau thu-->
+                                </label>
+                                <label class="input input-bordered flex items-center gap-2">
+                                    Ball Control<input type="text" name="stat-bcEdit" id="stat-bcEdit" class="grow text-center" placeholder="89" /><!--Vi tri-->
+                                </label>
+                            </div>
+
+                            <div class="flex flex-row gap-2 w-full">
+                                <label class="input input-bordered flex items-center gap-2">
+                                    Long Shot<input type="text" name="stat-lsEdit" id="stat-lsEdit" class="grow text-center" placeholder="91" /><!--Vi tri-->
+                                </label>
+                                <label class="input input-bordered flex items-center gap-2">
+                                    Shot Power<input type="text" name="stat-spEdit" id="stat-spEdit" class="grow text-center" placeholder="101" /><!--Vi tri-->
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex flex-row gap-2 w-full">
                     <label class="input input-bordered flex items-center gap-2 basis-1/2">
                         Tên cầu thủ<input type="text" name="nameEdit" id="nameEdit" class="grow" placeholder="Daisy" /><!--Ten cau thu-->

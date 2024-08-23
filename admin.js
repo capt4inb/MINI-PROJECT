@@ -1,5 +1,4 @@
 const API_URL = 'https://ktc-player-base-production.up.railway.app/api/v1'
-
 // DECLARE VARIABLES FORM
 const namePlayer = document.querySelector("#name");
 const positionPlayer = document.querySelector("#position");
@@ -16,6 +15,10 @@ const row = document.querySelector("tr");
 const editBtn = document.querySelector("#editBtn");
 const delBtn = document.querySelector("#delBtn");
 const inputFileAvatar = document.querySelector("#input__file-avatar");
+const stat_ss = document.querySelector("#stat-ss");
+const stat_bc = document.querySelector("#stat-bc");
+const stat_ls = document.querySelector("#stat-ls");
+const stat_sp = document.querySelector("#stat-sp");
 const apiRenderAll =
   "https://ktc-player-base-production.up.railway.app/api/v1/player";
 const apiUploadImg =
@@ -37,6 +40,10 @@ const saveBtn = document.querySelector("#save");
 const avatarPlayerEdit = document.querySelector("#imagePlayerEdit");
 let avatarPlayerEditValue;
 const inputFileAvatarEdit = document.querySelector("#input__file-avatarEdit");
+const stat_ssEdit = document.querySelector("#stat-ssEdit");
+const stat_bcEdit = document.querySelector("#stat-bcEdit");
+const stat_lsEdit = document.querySelector("#stat-lsEdit");
+const stat_spEdit = document.querySelector("#stat-spEdit");
 function clearForm() {
   namePlayer.value = "";
   positionPlayer.value = "";
@@ -55,7 +62,7 @@ const renderTableHTML = (data) =>
           <div class="avatar">
             <div class="mask mask-squircle h-12 w-12">
               <img src="${
-                data["avatar"] || "https://picsum.photos/200/300"
+                data["avatar"] || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"
               }" id="imagePlayer" alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
@@ -182,7 +189,7 @@ async function uploadImage(valueImage) {
     }
     const data = await res.json();
     avatarPlayerEditValue = data.secure_url;
-    console.log("link hinh moi ne "+avatarPlayerEditValue);
+    // console.log("link hinh moi ne "+avatarPlayerEditValue);
     if(inputFileAvatar){
     return (imagePreview.src = data.secure_url);
   }if(inputFileAvatarEdit){
@@ -196,26 +203,21 @@ async function uploadImage(valueImage) {
 // ADD FORM
 addBtn.addEventListener("click", async (e) => {
   e.preventDefault();
-  const playerName = namePlayer.value;
-  const playerPosition = positionPlayer.value;
-  const playerSalary = salaryPlayer.value;
-  const playerTeam = teamElement.value;
-  const playerDOB = dobPlayer.value;
-  const playerCountry = country.value;
-  const playerHeight = heightPlayer.value;
-  const playerWeight = weighPlayer.value;
-
   // Create a new player object with the form values
   const newPlayer = {
     avatar: imagePreview.src,
-    name: playerName,
-    position: playerPosition,
-    salary: playerSalary,
-    year_of_birth: playerDOB,
-    country: playerCountry | "England",
-    height: playerHeight,
-    weigh: playerWeight,
-    team_id: playerTeam | 1,
+    name: namePlayer.value,
+    ss:stat_ss.value | 80,
+    bc:stat_bc.value | 89,
+    ls:stat_ls.value | 91,
+    sp:stat_sp.value |80,
+    position: positionPlayer.value,
+    salary: salaryPlayer.value,
+    year_of_birth: dobPlayer.value,
+    country: country.value | "England",
+    height: heightPlayer.value,
+    weigh: weighPlayer.value,
+    team_id: teamElement.value | 1,
   };
   fetch("https://ktc-player-base-production.up.railway.app/api/v1/player", {
     method: "POST",
@@ -281,10 +283,13 @@ async function editData(id) {
     const data = await response.json();
     fetchTeamEdit(data.data.team["id"]);
     // console.log(data);
-    imagePreviewEdit.src = data.data.avatar;
+    imagePreviewEdit.src = data.data.avatar || imagePreviewEdit.src;
     namePlayerEdit.value = data.data.name;
     teamEdit.innerHTML = data.data.team["name"];
-    console.log(teamEdit.innerHTML);
+    stat_ssEdit.value = data.data.ss;
+    stat_bcEdit.value = data.data.bc;
+    stat_lsEdit.value = data.data.ls;
+    stat_spEdit.value = data.data.sp;
     positionPlayerEdit.value = data.data.position;
     salaryPlayerEdit.value = data.data.salary;
     dobPlayerEdit.value = data.data.yearOfBirth;
@@ -297,20 +302,23 @@ async function editData(id) {
 
   saveBtn.addEventListener("click", async (e) => {
     e.preventDefault();
+    fetchPlayers();
     const updatedPlayer = {
       avatar: avatarPlayerEditValue || data.data.avatar,
       name: namePlayerEdit.value,
+      ss: stat_ssEdit.value,
+      bc: stat_bcEdit.value,
+      ls: stat_lsEdit.value,
+      sp: stat_spEdit.value,
       position: positionPlayerEdit.value,
       salary: salaryPlayerEdit.value,
       year_of_birth: dobPlayerEdit.value,
-      country: countryEdit.value,
+      country: countryEdit.value || data.data.country,
       height: heightPlayerEdit.value,
       weigh: weighPlayerEdit.value,
       team_id: teamEdit.value,
     };
-  
-    console.log(updatedPlayer);
-  
+
     try {
       const response = await fetch(
         `https://ktc-player-base-production.up.railway.app/api/v1/player/${id}`,
@@ -327,10 +335,10 @@ async function editData(id) {
       if (!response.ok) {
         throw new Error(`Error status: ${response.status()}`);
       }
-      fetchPlayers();
     } catch (error) {
       console.error("Error:", error);
-    }
+    }  
+    fetchPlayers();    
   });
 }
 
