@@ -24,7 +24,7 @@ const token =
   "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW52bzEyMDIiLCJpYXQiOjE3MjM3OTI3MDcsImV4cCI6MTgxMDE5MjcwN30.KrTYRXUVSUZw5-ntBdnXV0IEkyCsDOZc2ESVe87f4DY"; // Replace with your actual token
 
 // DECLARE VARIABLES EDIT FORM
-const avatarPreviewEdit = document.querySelector("#imagePreviewEdit");
+const imagePreviewEdit = document.querySelector("#imagePreviewEdit");
 const namePlayerEdit = document.querySelector("#nameEdit");
 const positionPlayerEdit = document.querySelector("#positionEdit");
 const salaryPlayerEdit = document.querySelector("#salaryEdit");
@@ -35,6 +35,7 @@ const heightPlayerEdit = document.querySelector("#heightEdit");
 const weighPlayerEdit = document.querySelector("#weighEdit");
 const saveBtn = document.querySelector("#save");
 const avatarPlayerEdit = document.querySelector("#imagePlayerEdit");
+let avatarPlayerEditValue;
 const inputFileAvatarEdit = document.querySelector("#input__file-avatarEdit");
 function clearForm() {
   namePlayer.value = "";
@@ -137,10 +138,7 @@ async function fetchTeamEdit(teamId) {
     .then((response) => response.json())
     .then((data) => {
       const teamResult = data.data.map((data) => {
-        // console.log(teamId, data[])
-        return `<option value="${data["id"]}" ${
-          data["id"] === teamId ? "selected" : ""
-        }>${data["name"]}</option>`;
+        return `<option value="${data["id"]}" ${data["id"] === teamId ? "selected" : ""}>${data["name"]}</option>`;
       });
       teamEdit.innerHTML = teamResult.join("");
     })
@@ -155,11 +153,18 @@ inputFileAvatar.addEventListener("change", async (e) => {
   const response = await uploadImage(getFile);
 });
 
+inputFileAvatarEdit.addEventListener("change", async (e) => {
+  const getFile = e.target.files[0];
+  console.log(getFile);
+  const response = await uploadImage(getFile);
+  imagePreviewEdit.src = avatarPlayerEditValue;
+});
+
 async function uploadImage(valueImage) {
   // Get the selected file
   const formData = new FormData();
-  formData.append("file", valueImage); // Append the file
-  formData.append("folder", "avatar"); // Append additional data
+  formData.append("file", valueImage);
+  formData.append("folder", "avatar");
   // console.log(...formData)
   try {
     const res = await fetch(
@@ -176,8 +181,13 @@ async function uploadImage(valueImage) {
       throw new Error(`Error status:${res.status()}`);
     }
     const data = await res.json();
-    // console.log(data.secure_url)
+    avatarPlayerEditValue = data.secure_url;
+    console.log("link hinh moi ne "+avatarPlayerEditValue);
+    if(inputFileAvatar){
     return (imagePreview.src = data.secure_url);
+  }if(inputFileAvatarEdit){
+    return (imagePreviewEdit.src = avatarPlayerEditValue);
+  }
   } catch (error) {
     console.log(error);
   }
@@ -185,8 +195,7 @@ async function uploadImage(valueImage) {
 // FUNCTIONS
 // ADD FORM
 addBtn.addEventListener("click", async (e) => {
-  e.preventDefault(); // Prevent the form from submitting
-  // Get the values from the form inputs
+  e.preventDefault();
   const playerName = namePlayer.value;
   const playerPosition = positionPlayer.value;
   const playerSalary = salaryPlayer.value;
@@ -194,7 +203,7 @@ addBtn.addEventListener("click", async (e) => {
   const playerDOB = dobPlayer.value;
   const playerCountry = country.value;
   const playerHeight = heightPlayer.value;
-  const playerWeight = weighPlayer.value; // Correct field name
+  const playerWeight = weighPlayer.value;
 
   // Create a new player object with the form values
   const newPlayer = {
@@ -234,14 +243,11 @@ async function deleteData(id) {
     if (!response.ok) {
       throw new Error(`Error status: ${response.status()}`);
     }
-
-    // Re-fetch the data to update the table
     fetchPlayers();
   } catch (error) {
     console.error("Error:", error);
   }
 }
-// Add event listener to the delete button
 tableElement.addEventListener("click", (e) => {
   if (e.target.id === "delBtn") {
     const playerId = e.target.closest("tr").dataset.id;
@@ -272,11 +278,10 @@ async function editData(id) {
     if (!response.ok) {
       throw new Error(`Error status: ${response.status()}`);
     }
-
     const data = await response.json();
     fetchTeamEdit(data.data.team["id"]);
-    console.log(data); // Log the player's data
-    avatarPreviewEdit.src = data.data.avatar;
+    // console.log(data);
+    imagePreviewEdit.src = data.data.avatar;
     namePlayerEdit.value = data.data.name;
     teamEdit.innerHTML = data.data.team["name"];
     console.log(teamEdit.innerHTML);
@@ -289,4 +294,44 @@ async function editData(id) {
   } catch (error) {
     console.error("Error:", error);
   }
+
+  saveBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const updatedPlayer = {
+      avatar: avatarPlayerEditValue || data.data.avatar,
+      name: namePlayerEdit.value,
+      position: positionPlayerEdit.value,
+      salary: salaryPlayerEdit.value,
+      year_of_birth: dobPlayerEdit.value,
+      country: countryEdit.value,
+      height: heightPlayerEdit.value,
+      weigh: weighPlayerEdit.value,
+      team_id: teamEdit.value,
+    };
+  
+    console.log(updatedPlayer);
+  
+    try {
+      const response = await fetch(
+        `https://ktc-player-base-production.up.railway.app/api/v1/player/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedPlayer),
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Error status: ${response.status()}`);
+      }
+      fetchPlayers();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
 }
+
+
