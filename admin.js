@@ -1,6 +1,6 @@
 window.addEventListener("resize", function () {
   if (window.innerWidth < 850) { 
-    this.alert("Xem với thiết bị lớn hơn để được trải nghiệm tốt nhất");
+    this.alert("Xem với thiết bị lớn hơn để được trải nghiệm đầy đủ tính năng");
     this.document.body.style.scale = "70%";
   }
 })
@@ -25,13 +25,8 @@ const stat_ss = document.querySelector("#stat-ss");
 const stat_bc = document.querySelector("#stat-bc");
 const stat_ls = document.querySelector("#stat-ls");
 const stat_sp = document.querySelector("#stat-sp");
-const apiRenderAll =
-  "https://ktc-player-base-production.up.railway.app/api/v1/player";
-const apiUploadImg =
-  "https://ktc-player-base-production.up.railway.app/api/v1/upload/image";
 const token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW52bzEyMDIiLCJpYXQiOjE3MjM3OTI3MDcsImV4cCI6MTgxMDE5MjcwN30.KrTYRXUVSUZw5-ntBdnXV0IEkyCsDOZc2ESVe87f4DY"; // Replace with your actual token
-
+  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZW52bzEyMDIiLCJpYXQiOjE3MjM3OTI3MDcsImV4cCI6MTgxMDE5MjcwN30.KrTYRXUVSUZw5-ntBdnXV0IEkyCsDOZc2ESVe87f4DY";
 // DECLARE VARIABLES EDIT FORM
 const imagePreviewEdit = document.querySelector("#imagePreviewEdit");
 const namePlayerEdit = document.querySelector("#nameEdit");
@@ -288,7 +283,6 @@ async function editData(id) {
     }
     const data = await response.json();
     fetchTeamEdit(data.data.team["id"]);
-    // console.log(data);
     imagePreviewEdit.src = data.data.avatar || imagePreviewEdit.src;
     namePlayerEdit.value = data.data.name;
     teamEdit.innerHTML = data.data.team["name"];
@@ -308,7 +302,6 @@ async function editData(id) {
 
   saveBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    fetchPlayers();
     const updatedPlayer = {
       avatar: avatarPlayerEditValue || imagePreviewEdit.src,
       name: namePlayerEdit.value,
@@ -319,7 +312,7 @@ async function editData(id) {
       position: positionPlayerEdit.value,
       salary: salaryPlayerEdit.value,
       year_of_birth: dobPlayerEdit.value,
-      country: countryEdit.value || data.data.country,
+      country: countryEdit.value,
       height: heightPlayerEdit.value,
       weigh: weighPlayerEdit.value,
       team_id: teamEdit.value,
