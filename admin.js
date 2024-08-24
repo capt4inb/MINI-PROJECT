@@ -1,3 +1,9 @@
+window.addEventListener("resize", function () {
+  if (window.innerWidth < 850) { 
+    this.alert("Xem với thiết bị lớn hơn để được trải nghiệm tốt nhất");
+    this.document.body.style.scale = "70%";
+  }
+})
 const API_URL = 'https://ktc-player-base-production.up.railway.app/api/v1'
 // DECLARE VARIABLES FORM
 const namePlayer = document.querySelector("#name");
