@@ -310,7 +310,7 @@ async function editData(id) {
     e.preventDefault();
     fetchPlayers();
     const updatedPlayer = {
-      avatar: avatarPlayerEditValue || data.data.avatar,
+      avatar: avatarPlayerEditValue || imagePreviewEdit.src,
       name: namePlayerEdit.value,
       ss: stat_ssEdit.value,
       bc: stat_bcEdit.value,
