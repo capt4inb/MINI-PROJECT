@@ -241,7 +241,7 @@ selectPosition.addEventListener('change', (e) => {
 });
 
 const renderDataTeamForFilter = async (team, position) => {
-  // console.log('Selected Team:', team, 'Selected Position:', position);
+  console.log('Selected Team:', team, 'Selected Position:', position);
 
   try {
     const response = await fetch(
