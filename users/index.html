@@ -19,13 +19,13 @@
         transition: all 0.5s ease;
     }
 </style>
-
-<body
-    class="w-full h-full bg-red-500 flex flex-col items-center bg-[url('../image/backgroundbody.png')] bg-cover bg-no-repeat overflow-auto">
-    <header id="header" class="w-full sticky top-0 z-[100]">
+<!-- bg-[url('../image/backgroundbody.png')] bg-cover bg-no-repeat -->
+<body class="w-full h-full bg-base-300 flex flex-col items-center  overflow-auto">
+    
+    <header id="header" class="w-full sticky top-0 z-[100] bg-[#01A0FE] flex justify-between items-center p-2">
         <div class="bg-[#01A0FE] content flex justify-between items-center">
             <div class="logo m-2">
-                <img src="../image/logo.png" alt="logo">
+                <img src="../image/logo.png" alt="logo" class="w-16 h-16">
             </div>
             <div class="search-bar flex items-center mx-[50px] relative">
                 <label class="input input-bordered flex items-center gap-2">
@@ -36,8 +36,10 @@
         </div>
     </header>
 
-    <main class="w-full h-[842px]   relative flex justify-center items-center container overflow-hidden">
-        <div class=" w-[70%] h-[70%] z-10 rounded flex justify-center items-center">
+   
+
+    <main class="w-full h-screen flex justify-center items-center container overflow-hidden">
+        <div class=" w-full md:w-3/4 h-3/4 z-10 rounded flex justify-center items-center">
             <div class="swiper mySwiper">
                 <div id="swiperContainer" class="swiper-wrapper">
 
@@ -47,40 +49,68 @@
 
         </div>
     </main>
-    <section class="bg-white rounded h-[70vh] w-[70%] overflow-auto text-center">
-        <div class="overflow-x-auto p-2 flex flex-col">
-            <div id="btnSort" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1"><i class="fa fa-filter"></i>
+    <section class="bg-white rounded w-full md:w-3/4  text-center p-2">
+        <div class=" flex flex-col gap-5">
+            <div class="flex items-center">
+                <div id="btnSort" class="dropdown">
+                    <div role="button" class="btn m-1"><i class="fa fa-filter"></i>
+                    </div>
+                  </div>
+                <select id="selectTeam" class="select-sm select-bordered w-full max-w-xs">
+                    <option  selected>Choose your team</option>
+                  </select>
+                  <select id="selectPosition" class="select-sm select-bordered w-full max-w-xs">
+                    <option  selected>Choose your position</option>
+                    <option >LW</option>
+                    <option >LB</option>
+                  </select>
+            </div>
+            <div class="flex  w-full h-[500px] overflow-auto">
+                <table id="table" class="table table-auto w-1/2 ">
+                    <!-- head -->
+                    <thead class="text-center">
+                        <tr>
+                            <th>Name</th>
+                            <th>Height | Weight</th>
+                            <th>salary</th>
+                            <th>sp</th>
+                            <th>ss</th>
+                            <th>bc</th>
+                            <th>ls</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                    <!-- foot -->
+                </table>
+                <div class="bg-base-100 w-1/2 ">
+                    <table id="tableFilter" class="table table-auto w-full">
+                        <!-- head -->
+                        <thead class="text-center">
+                            <tr>
+                                <th>Name</th>
+                                <th>Height | Weight</th>
+                                <th>salary</th>
+                                <th>sp</th>
+                                <th>ss</th>
+                                <th>bc</th>
+                                <th>ls</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyFilter">
+                        </tbody>
+                        <!-- foot -->
+                    </table>
                 </div>
-              </div>
+            </div>
             
-            <table id="table" class="table">
-                <!-- head -->
-                <thead class="text-center">
-                    <tr>
-                        <th>Name</th>
-                        <th>Height | Weight</th>
-                        <th>salary</th>
-                        <th>sp</th>
-                        <th>ss</th>
-                        <th>bc</th>
-                        <th>ls</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-                </tbody>
-                <!-- foot -->
-            </table>
         </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="main.js"></script>
+
 </body>
 
 </html>
